@@ -1,0 +1,33 @@
+<div class="container">
+
+<select class='select-option' required [(ngModel)]='optionSelected' (ngModelChange)='searchBank($event)' class="custom-select">
+  <option class='option' *ngFor='let city of arrayOfCities' [value]="city">{{city}}</option>
+</select>
+
+<div class="input-group mb-3" id="input-field">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">search</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="placename">
+</div>
+<!-- <button class="button btn-primary">Search by Location</button> -->
+
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Bank Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">District</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let bank of arrayOfBanks|filter:placename">
+      <th scope="row">{{bank.bank_name}}</th>
+      <td>{{bank.address}}</td>
+      <td>{{bank.district}}</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
